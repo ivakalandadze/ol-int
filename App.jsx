@@ -5,8 +5,7 @@
  * @format
  */
 
-import {NavigationContainer} from '@react-navigation/native';
-import React, {useState} from 'react';
+import React from 'react';
 
 import {
   SafeAreaView,
@@ -17,8 +16,6 @@ import {
   View,
 } from 'react-native';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
-import MainDataContext from './src/context/dataContext';
-import NavContainer from './src/navigation';
 
 // 1. ნავიგაციისა და კონტექსტის ინსტალაცია
 // 2. მოაწყე ორი სქრინი ბოთომ ტაბსში: ჰოუმი და სერჩი
@@ -35,39 +32,17 @@ function App() {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
   };
 
-  const [mainData, setMainData] = useState([]);
-
   console.log('render');
   return (
-    <MainDataContext.Provider value={{mainData, setMainData}}>
-      <SafeAreaView style={{flex: 1}}>
-        <StatusBar
-          barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-          backgroundColor={backgroundStyle.backgroundColor}
-        />
-        <NavContainer />
-      </SafeAreaView>
-    </MainDataContext.Provider>
+    <SafeAreaView style={{flex: 1}}>
+      <StatusBar
+        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
+        backgroundColor={backgroundStyle.backgroundColor}
+      />
+    </SafeAreaView>
   );
 }
 
-const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-});
+const styles = StyleSheet.create({});
 
 export default App;
