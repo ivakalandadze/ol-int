@@ -16,6 +16,8 @@ import {
   View,
 } from 'react-native';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
+import MyTabs from './src/navigation/TabNavigator';
+import {Context} from './src/context/AppContext';
 
 // 1. ნავიგაციისა და კონტექსტის ინსტალაცია
 // 2. მოაწყე ორი სქრინი ბოთომ ტაბსში: ჰოუმი და სერჩი
@@ -32,14 +34,16 @@ function App() {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
   };
 
-  console.log('render');
   return (
-    <SafeAreaView style={{flex: 1}}>
-      <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={backgroundStyle.backgroundColor}
-      />
-    </SafeAreaView>
+    <Context.Provider>
+      <SafeAreaView style={{flex: 1}}>
+        <StatusBar
+          barStyle={isDarkMode ? 'light-content' : 'dark-content'}
+          backgroundColor={backgroundStyle.backgroundColor}
+        />
+        <MyTabs />
+      </SafeAreaView>
+    </Context.Provider>
   );
 }
 

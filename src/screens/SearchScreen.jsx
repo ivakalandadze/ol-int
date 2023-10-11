@@ -1,12 +1,14 @@
 import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 
-export default function SearchScreen() {
+const SearchScreen: React.FC = () => {
   return (
     <View>
       <Text>SearchScreen</Text>
     </View>
   );
-}
+};
+
+export default SearchScreen;
 
 const styles = StyleSheet.create({});
