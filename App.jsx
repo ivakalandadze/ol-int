@@ -5,7 +5,7 @@
  * @format
  */
 
-import React from 'react';
+import React, {createContext, useEffect, useState} from 'react';
 
 import {
   SafeAreaView,
@@ -16,6 +16,8 @@ import {
   View,
 } from 'react-native';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
+import {NavigationContainer} from '@react-navigation/native';
+import MyTabs from './src/navigation/TabNavigator';
 
 // 1. ნავიგაციისა და კონტექსტის ინსტალაცია
 // 2. მოაწყე ორი სქრინი ბოთომ ტაბსში: ჰოუმი და სერჩი
@@ -26,19 +28,11 @@ import {Colors} from 'react-native/Libraries/NewAppScreen';
 //API URL : https://jsonplaceholder.typicode.com/posts
 
 function App() {
-  const isDarkMode = useColorScheme() === 'dark';
-
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
-
-  console.log('render');
   return (
     <SafeAreaView style={{flex: 1}}>
-      <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={backgroundStyle.backgroundColor}
-      />
+      <NavigationContainer>
+        <MyTabs />
+      </NavigationContainer>
     </SafeAreaView>
   );
 }
